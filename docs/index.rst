@@ -19,6 +19,7 @@ The main documentation for the site is organized into a couple sections:
    :caption: Quickstart
    
    introduction
+   clean-git
    maven-usage
    gradle-usage
 
