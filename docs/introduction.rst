@@ -1,13 +1,15 @@
 Introduction
 ========================
 
-`jgitver`_ in essence is a set of tool providing auto-computation of projects versioning.
+`jgitver`_ in essence is a set of tool providing auto-computation of projects versioning and comes with plugins for :ref:`maven-usage <maven>` and :ref:`gradle-usage <gradle>`.
+
+For those who can wait go directly to :ref:`maven-usage <maven>` or :ref:`gradle-usage <gradle>` pages.
 
 Main features include:
 
 * project version calculation (`semver`_ compatible)
 * standardized but configurable computations
-* 0 file modification and thus 0 additional commit
+* **0** file modification and thus **0** additional commit
 * plugins for :ref:`maven-usage <maven>` and :ref:`gradle-usage <gradle>`
 
 When activated, jgitver is able for example to compute version number *à la maven* as following:
