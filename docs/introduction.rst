@@ -4,6 +4,7 @@ Introduction
 `jgitver`_ in essence is a set of tool providing auto-computation of projects versioning.
 
 Main features include:
+
 * project version calculation (`semver`_ compatible)
 * standardized but configurable computations
 * 0 file modification and thus 0 additional commit

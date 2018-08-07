@@ -6,9 +6,10 @@ jgitver has been created with `DRY`_ & `KISS`_ principles in mind especially to 
 Having this in mind, jgitver has been built to allow to **NOT** modify any project descriptor (pom.xml or build.gradle).
 
 The benefits from the above:
-- no pollution of git history for unnecessary commits. Your git log contain **ONLY** business changes ; `tag & deploy` actions are enough for your project
-- project version follows defined *(but configurable)* guidelines
-- version can be automatically change when working in branch
+
+* no pollution of git history for unnecessary commits. Your git log contain **ONLY** business changes ; `tag & deploy` actions are enough for your project
+* project version follows defined *(but configurable)* guidelines
+* version can be automatically change when working in branch
 
 To summarize if you are familiar with the following unnecessary commits _(in red)_ from `maven release` plugin
 
