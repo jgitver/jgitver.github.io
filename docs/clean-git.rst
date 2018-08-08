@@ -11,7 +11,7 @@ The benefits from the above:
 * project version follows defined *(but configurable)* guidelines
 * version can be automatically differentiated when working in branch
 
-To summarize if you are familiar with the following unnecessary commits _(in red)_ from `maven release` plugin
+To summarize if you are familiar with the following unnecessary commits *(in red)* from `maven release` plugin
 
 .. image:: images/maven-release-occourence-git-history.jpg
 
