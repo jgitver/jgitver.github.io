@@ -5,9 +5,13 @@ jgitver operates as a maven core extension and needs a per project installation.
 
 Installing is as simple as running the following command from the root directory of your project *(see below for othe methods)*:
 
+.. code-block:: none
+
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh)"
 
 Congratulations, your project now uses jgitver, run `mvn validate` to be convinced that jgitver works
+
+.. code-block:: none
 
     $ mvn validate
     [INFO] no suitable configuration file found, using defaults
@@ -25,10 +29,14 @@ All the installation scripts below will use the latest version available ; if yo
 **curl**
 ^^^^^^^^
 
+.. code-block:: none
+
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh)"
 
 **wget**
 ^^^^^^^^
+
+.. code-block:: none
 
     sh -c "$(wget https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh -O -)"
 
@@ -38,6 +46,8 @@ manual installation
 * Create a directory `.mvn` under the root directory of your project.
 * Create file `.mvn/extensions.xml`
 * Put the following content to `.mvn/extensions.xml` (adapt to `latest version`_).
+
+.. code-block:: none
 
     <extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">
