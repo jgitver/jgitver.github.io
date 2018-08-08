@@ -3,7 +3,7 @@ Maven usage
 
 jgitver operates as a maven core extension and needs a per project installation.
 
-Installing is as simple as running the following command from the root directory of your project *(see below for :ref:`other methods<other-methods>`)*:
+Installing is as simple as running the following command from the root directory of your project *(see below for :ref:`other methods<methods>`)*:
 
 .. code-block:: none
 
@@ -26,7 +26,7 @@ Congratulations, your project now uses jgitver, run `mvn validate` to be convinc
     As jgitver uses the maven core extension mechanism it requires a maven version >= `3.3.2`
 
 
-.. _other-methods:
+.. _methods:
 
 All installation methods
 ------------------------
