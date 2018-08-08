@@ -21,8 +21,13 @@ Congratulations, your project now uses jgitver, run `mvn validate` to be convinc
     [INFO]     fr.brouillard.oss::jgitver::0 -> 0.7.0-SNAPSHOT
 
 
-Installation methods
---------------------
+.. note::
+
+    As jgitver uses the maven core extension mechanism it requires a maven version >= `3.3.2`
+
+
+All installation methods
+------------------------
 
 All the installation scripts below will use the latest version available ; if you are updating find the `latest version here`_ or `there`_.
 
