@@ -4,7 +4,7 @@
 :email: matthieu@brouillard.fr
 :sectnums:
 :toc: left
-:toclevels: 2
+:toclevels: 1
 :toc-title: Usage
 :experimental:
 :description: documentation for jgitver related projects
@@ -12,11 +12,13 @@
 :imagesdir: ./images
 :icons: font
 
-:jgitver-oss-root:: https://github.com/jgitver
-:jgitver-doc:: {jgitver-oss-root}/jgitver.github.io
-:jgitver-lib:: {jgitver-oss-root}/jgitver
-:jgitver-maven-plugin:: {jgitver-oss-root}/jgitver-maven-plugin
-:jgitver-gradle-plugin:: {jgitver-oss-root}/gradle-jgitver-plugin
+:jgitver-oss-root: https://github.com/jgitver
+:jgitver-doc: {jgitver-oss-root}/jgitver.github.io
+:jgitver-lib: {jgitver-oss-root}/jgitver
+:jgitver-maven-plugin: {jgitver-oss-root}/jgitver-maven-plugin
+:jgitver-gradle-plugin: {jgitver-oss-root}/gradle-jgitver-plugin
+
+// based on http://mgreau.com/posts/2016/03/28/asciidoc-to-gh-pages-with-travis-ci-docker-asciidoctor.html
 
 image::jgitver_black.png[jgitver logo,200]
 
