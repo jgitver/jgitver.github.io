@@ -1,7 +1,7 @@
 = jgitver: project versioning like a [.line-through]#geek# git
 Matthieu Brouillard <matthieu@brouillard.fr>
 :toc: left
-include::attributes.adoc
+include::attributes.adoc[]
 :sectnums:
 :toclevels: 2
 :toc-title: Contents

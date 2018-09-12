@@ -1,11 +1,11 @@
-include::attributes.adoc
+include::attributes.adoc[]
 == Usage
 
-include::philosophy.adoc
+include::philosophy.adoc[]
 
-include::maven_usage.adoc
+include::maven_usage.adoc[]
 
-include::gradle_usage.adoc
+include::gradle_usage.adoc[]
 
 === Projects
 
