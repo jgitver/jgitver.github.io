@@ -3,3 +3,5 @@
 :jgitver-lib: {jgitver-oss-root}/jgitver
 :jgitver-maven-plugin: {jgitver-oss-root}/jgitver-maven-plugin
 :jgitver-gradle-plugin: {jgitver-oss-root}/gradle-jgitver-plugin
+:imagesdir: ./images
+:icons: font

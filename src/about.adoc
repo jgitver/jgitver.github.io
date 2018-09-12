@@ -1,0 +1,37 @@
+include::attributes.adoc[]
+== About
+
+because we believe in some high level principles like _"DRY (Don't Repeat Yourself")_, _"clean git history"_ we created {jgitver-doc}[jgitver] to allow automatic computation of project versions without unnecessary steps or edits of files.
+
+=== goal
+
+without changing `pom.xml` files or `build.gradle`, simply with `git commit`, `git tag` & `git branch` commands, your project descriptors versions are automatically computed when you launch a build command like `mvn package` or `gradle build`
+
+- `pom.xml` version computations using defaults in maven mode:
+
+image::jgitver-maven-defaults.png[title='jgitver using default maven configuration']
+
+- `build.gradle` version computations using defaults in gradle mode:
+
+image::jgitver-gradle-defaults.png[title='jgitver using default gradle configuration']
+
+=== clean git history
+
+because project version are computed automatically, there is no need anymore to pollute the project git history with some infamous unnecessary commits.
+
+Yes `maven:release` we're looking at you !
+
+On some projects, some 1/3 of commits are related to `maven:release` and the pom changes to adapt the version tag inside the `pom.xml`
+
+image::maven-release-on-maven-war-plugin.jpg[title='Isn\'t that git history pollution?']
+
+Using {jgitver-doc}[jgitver] a release process becomes really simple: *tag* & *deploy*
+
+[TIP]
+.maven release with jgitver is reduced to the following
+====
+```
+git tag -a X.Y.Z
+mvn deploy
+```
+====

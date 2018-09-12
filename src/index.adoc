@@ -8,7 +8,6 @@ include::attributes.adoc[]
 :experimental:
 :description: documentation for jgitver related projects
 :keywords: jgitver git porject version versioning
-:imagesdir: ./images
 :jgitver-oss-root: https://github.com/jgitver
 :jgitver-doc: {jgitver-oss-root}/jgitver.github.io
 :jgitver-lib: {jgitver-oss-root}/jgitver
@@ -17,7 +16,7 @@ include::attributes.adoc[]
 
 // based on http://mgreau.com/posts/2016/03/28/asciidoc-to-gh-pages-with-travis-ci-docker-asciidoctor.html
 
-image::jgitver_black.png[jgitver logo,200]
+image::jgitver_black.png[jgitver logo,200,role="right"]
 
 {jgitver-doc}[jgitver] consists of a set of library and plugins allowing to automatically compute project versions based on:
 
@@ -25,6 +24,8 @@ image::jgitver_black.png[jgitver logo,200]
 - git tags (annotated & lightweight)
 - git branches
 - configuration (predefined or explicit)
+
+include::about.adoc[]
 
 include::quickstart.adoc[]
 
