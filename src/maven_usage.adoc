@@ -1,1 +1,47 @@
-=== Maven usage in 30s
+include::attributes.adoc[]
+=== Maven usage
+
+{jgitver-doc}[jgitver] works a maven core extension ; as such it needs to be referenced inside a file `YOUR_PROJECT/.mvn/extensions.xml`
+
+*Manual edition of `.mvn/extensions.xml`*
+
+* Create a directory `.mvn` under the root directory of your project.
+* Create file `.mvn/extensions.xml`
+* Put the following content to `.mvn/extensions.xml` (adapt to http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22fr.brouillard.oss%22%20a%3A%22jgitver-maven-plugin%22[latest version]).
+
+[source,xml]
+----
+<extensions xmlns="http://maven.apache.org/EXTENSIONS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/EXTENSIONS/1.0.0 http://maven.apache.org/xsd/core-extensions-1.0.0.xsd">
+  <extension>
+    <groupId>fr.brouillard.oss</groupId>
+    <artifactId>jgitver-maven-plugin</artifactId>
+    <version>1.3.0</version>
+  </extension>
+</extensions>
+----
+
+*Automatic creation of `.mvn/extensions.xml`*
+
+- using `curl`:
+----
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh)"
+----
+
+- using `wget`:
+----
+sh -c "$(wget https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh -O -)"
+----
+
+Once you have created the file, your project versioning is now handled by {jgitver-doc}[jgitver].
+Just launch `mvn validate` to see {jgitver-doc}[jgitver] in action on your project.
+
+.Maven launch on jgitver project itself
+----
+$ mvn validate
+[INFO] no suitable configuration file found, using defaults
+[INFO] Scanning for projects...
+[INFO] Using jgitver-maven-plugin [1.3.0] (sha1: ef8eec9f820d662e63a84f1210c377183e450cbd)
+[INFO] jgitver-maven-plugin is about to change project(s) version(s)
+[INFO]     fr.brouillard.oss::jgitver::0 -> 0.7.0-SNAPSHOT
+----

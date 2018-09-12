@@ -1,1 +1,18 @@
 == Developer documentation
+
+=== Contribution
+
+=== Projects
+
+{jgitver-doc}[jgitver] is composed by:
+
+- {jgitver-lib}[jgitver library]: a java library using git that computes a git repository version based on a given configuration
+- {jgitver-maven-plugin}[jgitver maven plugin]: a maven core extension allowing to compute POM versions without any effort or `pom.xml` modification
+- {jgitver-gradle-plugin}[jgitver gradle plugin]: a gradle plugin allowing to compute gradle project version
+
+As it is always good to _eat your own food_, all the above projects self-use either the {jgitver-maven-plugin}[jgitver maven plugin] or {jgitver-gradle-plugin}[gradle one] ; thus you can look at them as examples.
+
+=== Contribution
+
+Any kind of contribution is really welcome.
+
