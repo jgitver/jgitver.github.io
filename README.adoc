@@ -1,17 +1,14 @@
 = jgitver: project versioning like a [.line-through]#geek# git
-
-:author: Matthieu Brouillard
-:email: matthieu@brouillard.fr
-:sectnums:
+Matthieu Brouillard <matthieu@brouillard.fr>
 :toc: left
-:toclevels: 1
-:toc-title: Usage
+include::attributes.adoc
+:sectnums:
+:toclevels: 2
+:toc-title: Contents
 :experimental:
 :description: documentation for jgitver related projects
 :keywords: jgitver git porject version versioning
 :imagesdir: ./images
-:icons: font
-
 :jgitver-oss-root: https://github.com/jgitver
 :jgitver-doc: {jgitver-oss-root}/jgitver.github.io
 :jgitver-lib: {jgitver-oss-root}/jgitver
@@ -29,12 +26,10 @@ image::jgitver_black.png[jgitver logo,200]
 - git branches
 - configuration (predefined or explicit)
 
-== Library and plugins
+include::quickstart.adoc[]
 
-{jgitver-doc}[jgitver] mainly consists of:
+include::user_documentation.adoc[]
 
-- {jgitver-lib}[jgitver library]: a java library using git that computes a git repository version based on a given configuration
-- {jgitver-maven-plugin}[jgitver maven plugin]: a maven core extension allowing to compute POM versions without any effort or `pom.xml` modification
-- {jgitver-gradle-plugin}[jgitver gradle plugin]: a gradle plugin allowing to compute gradle project version
+include::dev_documentation.adoc[]
 
-As it is always good to _eat your own food_, all the above projects self-use either the {jgitver-maven-plugin}[jgitver maven plugin] or {jgitver-gradle-plugin}[gradle one] ; thus you can look at them as examples.
+

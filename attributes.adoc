@@ -1,0 +1,5 @@
+:jgitver-oss-root: https://github.com/jgitver
+:jgitver-doc: {jgitver-oss-root}/jgitver.github.io
+:jgitver-lib: {jgitver-oss-root}/jgitver
+:jgitver-maven-plugin: {jgitver-oss-root}/jgitver-maven-plugin
+:jgitver-gradle-plugin: {jgitver-oss-root}/gradle-jgitver-plugin
