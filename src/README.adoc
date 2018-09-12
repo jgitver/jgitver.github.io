@@ -30,6 +30,6 @@ include::quickstart.adoc[]
 
 include::user_documentation.adoc[]
 
-include::dev_documentation.adoc[]
+include::developer_documentation.adoc[]
 
 
