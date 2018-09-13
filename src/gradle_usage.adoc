@@ -1,1 +1,45 @@
+include::attributes.adoc[]
 === Gradle usage
+
+Using jgitver with https://gradle.org/[gradle] is as simple as adding it as a plugin
+
+[source,groovy]
+----
+plugins {
+  id "fr.brouillard.oss.gradle.jgitver" version "0.4.1"
+}
+----
+
+Congrats, your project now uses jgitver !
+
+----
+$ gradle version
+
+> Task :version
+Version: 1.1.0-1
+
+BUILD SUCCESSFUL in 1s
+----
+
+[NOTE]
+====
+*gradle version < 2.1*
+
+Above declaration only works for gradle >= 2.1, another way of declaring the plugin, working for all gradle versions including the ones < 2.1
+
+[source,groovy]
+----
+buildscript {
+  repositories {
+    maven {
+      url "https://plugins.gradle.org/m2/"
+    }
+  }
+  dependencies {
+    classpath "gradle.plugin.fr.brouillard.oss.gradle:gradle-jgitver-plugin:0.4.1"
+  }
+}
+
+apply plugin: 'fr.brouillard.oss.gradle.jgitver'
+----
+====
