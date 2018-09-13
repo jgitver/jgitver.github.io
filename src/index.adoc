@@ -25,13 +25,13 @@ image::jgitver_black.png[jgitver logo,200,role="right"]
 - git branches
 - configuration (predefined or explicit)
 
-include::about.adoc[]
+include::about.adoc[leveloffset=+1]
 
-include::quickstart.adoc[]
+include::quickstart.adoc[leveloffset=+1]
 
-include::user_documentation.adoc[]
+include::user_documentation.adoc[leveloffset=+1]
 
-include::developer_documentation.adoc[]
+include::developer_documentation.adoc[leveloffset=+1]
 
 == Support
 

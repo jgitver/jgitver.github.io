@@ -1,5 +1,5 @@
 include::attributes.adoc[]
-=== Gradle usage
+= Gradle usage
 
 Using jgitver with https://gradle.org/[gradle] is as simple as adding it as a plugin
 

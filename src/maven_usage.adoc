@@ -1,10 +1,10 @@
 include::attributes.adoc[]
-=== Maven usage
+= Maven usage
 
 {jgitver-doc}[jgitver] is a maven core extension ; as such it needs to be referenced inside a file `YOUR_PROJECT/.mvn/extensions.xml`.
 If you do not have already an extension file, create one using any below technique.
 
-==== Automatic creation of _.mvn/extensions.xml_
+== Automatic creation of _.mvn/extensions.xml_
 
 // url shorten created via https://blog.github.com/2011-11-10-git-io-github-url-shortener/
 // using the command
@@ -20,7 +20,7 @@ sh -c "$(curl -fsSL https://git.io/fA6sj)"
 sh -c "$(wget -q https://git.io/fA6sj -O -)"
 ----
 
-==== Manual edition of _.mvn/extensions.xml_
+== Manual edition of _.mvn/extensions.xml_
 
 * Create a directory `.mvn` under the root directory of your project.
 * Create file `.mvn/extensions.xml`
@@ -38,7 +38,7 @@ sh -c "$(wget -q https://git.io/fA6sj -O -)"
 </extensions>
 ----
 
-==== let jgitver operate
+== let jgitver operate
 
 Once you have created the file, your project versioning is now handled by {jgitver-doc}[jgitver].
 Just launch `mvn validate` to see {jgitver-doc}[jgitver] in action on your project ; now you can see it computing your project version.

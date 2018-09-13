@@ -1,8 +1,7 @@
-== Developer documentation
+include::attributes.adoc[]
+= Developer documentation
 
-=== Contribution
-
-=== Projects
+== Projects
 
 {jgitver-doc}[jgitver] is composed by:
 
@@ -12,7 +11,9 @@
 
 As it is always good to _eat your own food_, all the above projects self-use either the {jgitver-maven-plugin}[jgitver maven plugin] or {jgitver-gradle-plugin}[gradle one] ; thus you can look at them as examples.
 
-=== Contribution
+== Contribution
+
+include::includes.adoc[tag=wip]
 
 Any kind of contribution is really welcome.
 

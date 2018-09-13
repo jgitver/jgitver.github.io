@@ -1,1 +1,27 @@
-== User documentation
+include::attributes.adoc[]
+= User documentation
+
+include::includes.adoc[tag=wip]
+
+see the <<developer_documentation.adoc#_projects,projects>> section to access existing projects README.
+
+== Modes
+
+include::includes.adoc[tag=wip]
+
+see the https://github.com/jgitver/jgitver#configuration-modes--strategies[modes section] in
+https://github.com/jgitver/jgitver[jgitver library] until the doc is enhanced.
+
+== Maven configuration
+
+include::includes.adoc[tag=wip]
+
+see the https://github.com/jgitver/jgitver-maven-plugin[jgitver-maven-plugin] project
+https://github.com/jgitver/jgitver-maven-plugin/blob/master/README.md[README] until the doc is enhanced.
+
+== Gradle configuration
+
+include::includes.adoc[tag=wip]
+
+see the https://github.com/jgitver/gradle-jgitver-plugin[gradle-jgitver-plugin] project
+https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md[README] until the doc is enhanced.

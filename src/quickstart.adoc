@@ -1,6 +1,6 @@
 include::attributes.adoc[]
-== Getting Started
+= Getting Started
 
-include::maven_usage.adoc[]
+include::maven_usage.adoc[leveloffset=+1]
 
-include::gradle_usage.adoc[]
+include::gradle_usage.adoc[leveloffset=+1]
