@@ -1,9 +1,26 @@
 include::attributes.adoc[]
 === Maven usage
 
-{jgitver-doc}[jgitver] works a maven core extension ; as such it needs to be referenced inside a file `YOUR_PROJECT/.mvn/extensions.xml`
+{jgitver-doc}[jgitver] is a maven core extension ; as such it needs to be referenced inside a file `YOUR_PROJECT/.mvn/extensions.xml`.
+If you do not have already an extension file, create one using any below technique.
 
-*Manual edition of `.mvn/extensions.xml`*
+==== Automatic creation of _.mvn/extensions.xml_
+
+// url shorten created via https://blog.github.com/2011-11-10-git-io-github-url-shortener/
+// using the command
+// curl -i https://git.io -F "url=https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh"
+
+- using `curl`:
+----
+sh -c "$(curl -fsSL https://git.io/fA6sj)"
+----
+
+- using `wget`:
+----
+sh -c "$(wget -q https://git.io/fA6sj -O -)"
+----
+
+==== Manual edition of _.mvn/extensions.xml_
 
 * Create a directory `.mvn` under the root directory of your project.
 * Create file `.mvn/extensions.xml`
@@ -21,20 +38,10 @@ include::attributes.adoc[]
 </extensions>
 ----
 
-*Automatic creation of `.mvn/extensions.xml`*
-
-- using `curl`:
-----
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh)"
-----
-
-- using `wget`:
-----
-sh -c "$(wget https://raw.githubusercontent.com/jgitver/jgitver-maven-plugin/master/src/doc/scripts/install.sh -O -)"
-----
+==== let jgitver operate
 
 Once you have created the file, your project versioning is now handled by {jgitver-doc}[jgitver].
-Just launch `mvn validate` to see {jgitver-doc}[jgitver] in action on your project.
+Just launch `mvn validate` to see {jgitver-doc}[jgitver] in action on your project ; now you can see it computing your project version.
 
 .Maven launch on jgitver project itself
 ----
