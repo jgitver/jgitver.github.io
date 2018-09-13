@@ -20,7 +20,6 @@ docker run --rm -it -v %CD%\src:/documents/ asciidoctor/docker-asciidoctor /bin/
 ```
 
 ```
-mkdir output 
-cp -R images/ output/images/
-asciidoctor -D /documents/output index.adoc
+rm -rf output && mkdir output 
+watch -n 10 "cp -R images/ output/ && asciidoctor -D /documents/output index.adoc"
 ```
