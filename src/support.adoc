@@ -1,0 +1,17 @@
+include::attributes.adoc[]
+== Support
+
+=== Community Support
+
+* for a question about the usage of {jgitver-doc}[jgitver] or any of it's plugin, please use the
+image:https://img.shields.io/gitter/room/jgitver/jgitver.svg[link="https://gitter.im/jgitver/Lobby"] room.
+* in case of bug please open an issue:
+** maven related problems: https://github.com/jgitver/jgitver-maven-plugin/issues[jgitver-maven-plugin/issues]
+** gradle related problems: https://github.com/jgitver/gradle-jgitver-plugin/issues[gradle-jgitver-plugin/issues]
+** for enhancement requests, please open an issue on the https://github.com/jgitver/jgitver/issues[library itself]
+* to contribute to this documentation, please read the https://github.com/jgitver/jgitver.github.io[README], open a https://github.com/jgitver/jgitver.github.io/pulls[pull request] with your change
+* due to history, the maven plugin had also a https://github.com/jgitver/jgitver-maven-plugin/wiki[wiki]. There is a continuous effort to migrate the wiki pages into the official documentation https://github.com/jgitver/jgitver.github.io[project].
+
+=== Professional support
+
+For anything outside of the community support please contact me image:https://img.shields.io/badge/email-Matthieu%20Brouillard-blue.svg[link="mailto://matthieu@brouilard.fr"] image:https://img.shields.io/twitter/url/http/shields.io.svg?style=social["Twitter URL",link="https://twitter.com/alightinthefog"]
