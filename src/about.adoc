@@ -15,6 +15,11 @@ image::jgitver-maven-defaults.png[title='jgitver using default maven configurati
 
 image::jgitver-gradle-defaults.png[title='jgitver using default gradle configuration']
 
+[TIP]
+====
+jgitver is highly configurable. You can define & infuence the way the version is computed. See the <<user_documentation.adoc,User Documentation>> for more details.
+====
+
 == Clean Git history
 
 because project version are computed automatically, there is no need anymore to pollute the project git history with some infamous unnecessary commits.
