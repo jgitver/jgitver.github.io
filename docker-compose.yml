@@ -1,0 +1,16 @@
+version: '3'
+services:
+  asciidoctor:
+    image: "asciidoctor/docker-asciidoctor"
+    command: 'watch -n 10 "asciidoctor -D /usr/share/nginx/html index.adoc && cp -R images/ /usr/share/nginx/html/"'
+    volumes:
+      - ./src:/documents
+      - static-content:/usr/share/nginx/html
+  nginx:
+    image: "nginx:1.15"
+    ports:
+      - "8090:80"
+    volumes:
+    - static-content:/usr/share/nginx/html
+volumes:
+  static-content:
