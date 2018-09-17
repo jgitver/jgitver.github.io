@@ -14,5 +14,5 @@ On success the result of the build is commit back to the `master` branch of this
 The easiest way to build and serve this site locally is to use `docker-compose`.
 
 - launch docker images that build and http serve the result: `docker-compose up`
-- navigate to [http://localhost:8090]()
+- navigate to [http://localhost:8090](http://localhost:8090)
 - when done shutdown the docker images: `docker-compose down`
