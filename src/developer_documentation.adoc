@@ -33,3 +33,22 @@ You can help the project in many ways:
   - via a https://www.paypal.me/MatthieuBrouillard[paypal] donation
   - for other kind of support please email Matthieu Brouillard using: oss@brouillard.fr
 
+== Who is using jgitver
+
+[NOTE]
+====
+If you want your company/project to be named here you can either:
+
+- send me a image:https://img.shields.io/twitter/url/http/shields.io.svg?style=social["Twitter URL",link="https://twitter.com/alightinthefog"]
+- push me an image:https://img.shields.io/badge/email-Matthieu%20Brouillard-blue.svg[link="mailto://matthieu@brouilard.fr"]
+- open an https://github.com/jgitver/jgitver.github.io/issues[issue]
+- create a https://github.com/jgitver/jgitver.github.io/pulls[PR]
+====
+
+jgitver is already in use in:
+
+- all https://github.com/jgitver[jgitver] projects
+- https://global.agfahealthcare.com/main/[AGFA Healthcare]
+- link:https://labs.oracle.com/pls/apex/f?p=labs:23:::::P23_LOCATION_ID:46[Oracle Labs Australia]
+- project contributors (https://github.com/jgitver/jgitver/graphs/contributors[library], https://github.com/jgitver/jgitver-maven-plugin/graphs/contributors[maven])
+
