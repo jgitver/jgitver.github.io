@@ -5,9 +5,9 @@ include::attributes.adoc[]
 
 {jgitver-doc}[jgitver] is composed by:
 
-- {jgitver-lib}[jgitver library]: a java library using git that computes a git repository version based on a given configuration
-- {jgitver-maven-plugin}[jgitver maven plugin]: a maven core extension allowing to compute POM versions without any effort or `pom.xml` modification
-- {jgitver-gradle-plugin}[jgitver gradle plugin]: a gradle plugin allowing to compute gradle project version
+* {jgitver-lib}[jgitver library]: a java library using git that computes a git repository version based on a given configuration
+* {jgitver-maven-plugin}[jgitver maven plugin]: a maven core extension allowing to compute POM versions without any effort or `pom.xml` modification
+* {jgitver-gradle-plugin}[jgitver gradle plugin]: a gradle plugin allowing to compute gradle project version
 
 As it is always good to _eat your own food_, all the above projects self-use either the {jgitver-maven-plugin}[jgitver maven plugin] or {jgitver-gradle-plugin}[gradle one] ; thus you can look at them as examples.
 
@@ -15,5 +15,21 @@ As it is always good to _eat your own food_, all the above projects self-use eit
 
 include::includes.adoc[tag=wip]
 
-Any kind of contribution is really welcome.
+Any kind of contribution is highly appreciated and welcome.
+
+You can help the project in many ways:
+
+* leverage it's usage in your company
+* create a blog, tweet, post on social media ; make some awareness of the project
+* star the xref:Projects[projects] on github
+* ask & answer questions on the https://gitter.im/jgitver/Lobby[gitter chat room]
+* report issues in each xref:Projects[projects] issues page (https://github.com/jgitver/jgitver/issues[library], https://github.com/jgitver/jgitver-maven-plugin/issues[maven], https://github.com/jgitver/gradle-jgitver-plugin/issues[gradle])
+* participate in documentation enhancement (**VERY important**)
+  - this documentation enhancement, please read the https://github.com/jgitver/jgitver.github.io[README], open a https://github.com/jgitver/jgitver.github.io/pulls[pull request] with your change
+  - README & documentation enhancement (via PR on each xref:Projects[project])
+  - new katacoda tutorials, make PR on this project: https://github.com/McFoggy/jgitver-katacoda-scenarios[jgitver-katacoda-scenarios]
+* new feature or bug fixing via a PR on each xref:Projects[project]
+* support the project:
+  - via a https://www.paypal.me/MatthieuBrouillard[paypal] donation
+  - for other kind of support please email Matthieu Brouillard using: oss@brouillard.fr
 
