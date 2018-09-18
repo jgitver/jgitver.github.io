@@ -7,10 +7,58 @@ see the <<developer_documentation.adoc#_projects,projects>> section to access ex
 
 == Modes
 
-include::includes.adoc[tag=wip]
+{jgitver-doc}[jgitver] provides different ways of computing version called _'modes'_ or _'strategies'_. Each mode comes with some behavior, defaults and configuration capabilities.
 
-see the https://github.com/jgitver/jgitver#configuration-modes--strategies[modes section] in
-https://github.com/jgitver/jgitver[jgitver library] until the doc is enhanced.
+=== maven mode
+
+[TIP]
+====
+The maven mode is built to reflect maven way of versioning: SNAPSHOTs and RELEASEs
+====
+
+
+In this mode _(which is the default mode of the jgitver maven plugin)_, {jgitver-lib}[jgitver] will:
+
+- on a DETACHED HEAD having an annotated tag, use the tag name without further computation : _mean to release_
+- add SNAPSHOT qualifier to the calculated version each time it is not in the previous state : _everything is a SNAPSHOT except a release_
+- increase the patch version except if it comes from a lightweight tag : _mean to start a new version pattern numbering_
+- use annotated tags before lightweight ones when on a DETACHED HEAD : _reproducible builds for release_
+- use lightweight tags before annotated ones when on a normal branch (master or any other branch) : _start 'next' version after release_
+- add a branch qualifier on purpose : _avoid version collision for feature branches_
+
+=== default mode
+
+[TIP]
+====
+The default mode is built to reflect a standard way of versioning, each commit being uniquely identified.
+====
+
+In this mode _(which is the default mode of the jgitver gradle plugin)_, {jgitver-lib}[jgitver] will:
+
+* on a DETACHED HEAD having an annotated tag, use the tag name without further computation
+* use annotated tags before lightweight ones when on a DETACHED HEAD
+* use lightweight tags before annotated ones when on a normal branch (master or any other branch)
+  - exception is when HEAD is on current branch, lightweight tags have precedence only when the repository is dirty
+* add a branch qualifier on purpose
+
+=== pattern mode
+
+[TIP]
+====
+This mode allows some freedom to the project owner. As a project maintainer you define/configure your own pattern of versioning.
+====
+
+[WARNING]
+====
+The pattern mode is new in jgitver-0.7.0 and is to be considered as beta feature.
+====
+
+In this mode, {jgitver-lib}[jgitver] computes some metadatas that can be used in a pattern definition, provided by configuration, to compute the final version.
+
+[NOTE]
+====
+this section needs enhancements. Partial information can be found in https://github.com/jgitver/jgitver/issues/33#issuecomment-350811654[jgitver#33].
+====
 
 == Maven configuration
 
