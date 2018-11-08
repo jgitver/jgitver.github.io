@@ -35,7 +35,7 @@ sh -c "$(wget -q https://git.io/fA6sj -O -)"
   <extension>
     <groupId>fr.brouillard.oss</groupId>
     <artifactId>jgitver-maven-plugin</artifactId>
-    <version>1.3.0</version>
+    <version>1.4.2</version>
   </extension>
 </extensions>
 ----
