@@ -24,7 +24,7 @@ after_failure:
 after_success:
 - cd $PWD/src/output ; cp -R ../images images ; cp -R ../../maven maven
 - git init
-- git config user.name "${GH_USER_NAME}"
+- git config user.name "travis-ci for ${GH_USER_NAME}"
 - git config user.email "${GH_USER_EMAIL}"
 - git add . ; git commit -m "Deploy to GitHub Pages"
 - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master > /dev/null 2>&1
