@@ -43,3 +43,9 @@ buildscript {
 apply plugin: 'fr.brouillard.oss.gradle.jgitver'
 ----
 ====
+
+== Online demo
+
+If you want to quickly evaluate jgitver while being guided in the different steps, please follow the https://www.katacoda.com/mcfoggy/courses/jgitver[jgitver interactive guide] on the katakoda platform.
+
+image:jgitver-katakoda-getting-started-on-gradle.png[link="https://www.katacoda.com/mcfoggy/courses/jgitver/gradle-intro"]
