@@ -2,6 +2,7 @@
 Matthieu Brouillard <matthieu@brouillard.fr>
 :toc: left
 include::attributes.adoc[]
+include::analytics.adoc[]
 :sectnums:
 :toclevels: 2
 :toc-title: Contents
