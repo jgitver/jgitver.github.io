@@ -73,3 +73,37 @@ include::includes.adoc[tag=wip]
 
 see the https://github.com/jgitver/gradle-jgitver-plugin[gradle-jgitver-plugin] project
 https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md[README] until the doc is enhanced.
+
+== IDEs usage
+
+By providing dynamic versioning, {jgitver-doc}[jgitver] is not currently the best friend of IDEs.
+Please refer to the instructions of your preferred IDE and if you need project dependency within the IDE then look
+at the latest paragraph.
+
+=== Eclipse
+
+{jgitver-doc}[jgitver] works out of the box inside Eclipse.
+Just import your project as would do normally.
+
+=== Intellij IDEA
+
+Unfortunately, Intellij IDEA still does notwork out of the box when {jgitver-doc}[jgitver] is there.
+The problem has been reported to Intellij under the following issue https://youtrack.jetbrains.com/issue/IDEA-187928[IDEA-187928].
+
+To workaround Intellij failure, you have to deactivate {jgitver-doc}[jgitver] for the import step.
+For maven projects for example, open the settings `CTRL+ALT+S` and modify imports settings by adding `-Djgitver.skip=true`
+as in the below image.
+
+image:intellij-skip-jgitver.jpg[]
+
+=== Netbeans
+
+{jgitver-doc}[jgitver] works out of the box inside Netbeans.
+Just import your project as would do normally.
+
+=== Project dependencies within IDEs
+
+include::includes.adoc[tag=wip]
+
+
+
