@@ -77,17 +77,17 @@ https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md[README] u
 == IDEs usage
 
 By providing dynamic versioning, {jgitver-doc}[jgitver] is not currently the best friend of IDEs.
-Please refer to the instructions of your preferred IDE and if you need project dependency within the IDE then look
+Please refer to the instructions of your preferred IDE and if you need projects dependencies within the IDE then look
 at the latest paragraph.
 
 === Eclipse
 
 {jgitver-doc}[jgitver] works out of the box inside Eclipse.
-Just import your project as would do normally.
+Just import your project as you would do normally.
 
 === Intellij IDEA
 
-Unfortunately, Intellij IDEA still does notwork out of the box when {jgitver-doc}[jgitver] is there.
+Unfortunately, Intellij IDEA still does not work out of the box when {jgitver-doc}[jgitver] is there.
 The problem has been reported to Intellij under the following issue https://youtrack.jetbrains.com/issue/IDEA-187928[IDEA-187928].
 
 To workaround Intellij failure, you have to deactivate {jgitver-doc}[jgitver] for the import step.
@@ -99,7 +99,7 @@ image:intellij-skip-jgitver.jpg[]
 === Netbeans
 
 {jgitver-doc}[jgitver] works out of the box inside Netbeans.
-Just import your project as would do normally.
+Just import your project as you would do normally.
 
 === Project dependencies within IDEs
 
