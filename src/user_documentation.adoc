@@ -77,13 +77,18 @@ https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md[README] u
 == IDEs usage
 
 By providing dynamic versioning, {jgitver-doc}[jgitver] is not currently the best friend of IDEs.
+
+But on the other hand your IDE is probably not your build tool ; so it is not a problem if it does understand all of your build pipeline.
+
 Please refer to the instructions of your preferred IDE and if you need projects dependencies within the IDE then look
 at the latest paragraph.
 
 === Eclipse
 
-{jgitver-doc}[jgitver] works out of the box inside Eclipse.
+Having {jgitver-doc}[jgitver] setup on your project does not hurt Eclipse at all.
+
 Just import your project as you would do normally.
+Eclipse will import it using the content of your pom.xml file, it will not evaluate version using {jgitver-doc}[jgitver].
 
 === Intellij IDEA
 
@@ -98,12 +103,16 @@ image:intellij-skip-jgitver.jpg[]
 
 === Netbeans
 
-{jgitver-doc}[jgitver] works out of the box inside Netbeans.
+Exactly like Eclipse does, Netbeans just use the content of the pom.xml while importing your project.
 Just import your project as you would do normally.
 
 === Project dependencies within IDEs
 
+If you want to open several projects within your IDE and make project references between
+those projects then having projects which version is dynamically changing is not the best way to help
+your IDE keeping the references between the projects.
+
+Especially if your are not using maven like `SNAPSHOT` but unique version for each of your commits then it is better to bypass the dynamic nature of {jgitver-doc}[jgitver].
+
 include::includes.adoc[tag=wip]
-
-
 
