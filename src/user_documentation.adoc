@@ -486,6 +486,7 @@ Eclipse will import it using the content of your pom.xml file, it will not evalu
 
 Unfortunately, Intellij IDEA still does not work out of the box when {jgitver-doc}[jgitver] is there.
 The problem has been reported to Intellij under the following issue https://youtrack.jetbrains.com/issue/IDEA-187928[IDEA-187928].
+Anecdotally, recent versions of IntelliJ have no problem with {jgitver-gradle-plugin}}[the Gradle plugin].
 
 To workaround Intellij failure, you have to deactivate {jgitver-doc}[jgitver] for the import step.
 For maven projects for example, open the settings `CTRL+ALT+S` and modify imports settings by adding `-Djgitver.skip=true`
