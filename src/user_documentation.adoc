@@ -9,6 +9,17 @@ see the <<developer_documentation.adoc#_projects,projects>> section to access ex
 
 {jgitver-doc}[jgitver] provides different ways of computing version called _'modes'_ or _'strategies'_. Each mode comes with some behavior, defaults and configuration capabilities.
 
+Each of the modes has their own options. Those options are detailed in the configuration section of each of the mode sections below.
+
+The mode itself is set via the strategy option:
+
++++ <details><summary> +++
+*_Click for configuration options_*
++++ </summary><div> +++
+
+include::options.adoc[tag=strategyOptions]
++++ </div></details> +++
+
 === maven mode
 
 [TIP]
@@ -26,6 +37,13 @@ In this mode _(which is the default mode of the jgitver maven plugin)_, {jgitver
 - use lightweight tags before annotated ones when on a normal branch (master or any other branch) : _start 'next' version after release_
 - add a branch qualifier on purpose : _avoid version collision for feature branches_
 
++++ <details><summary> +++
+*_Click for configuration options_*
++++ </summary><div> +++
+
+include::options.adoc[tags=qualifierOptions;generalOptions;useDirty]
++++ </div></details> +++
+
 === default mode
 
 [TIP]
@@ -41,6 +59,13 @@ In this mode _(which is the default mode of the jgitver gradle plugin)_, {jgitve
   - exception is when HEAD is on current branch, lightweight tags have precedence only when the repository is dirty
 * add a branch qualifier on purpose
 
++++ <details><summary> +++
+*_Click for configuration options_*
++++ </summary><div> +++
+
+include::options.adoc[tags=qualifierOptions;generalOptions;gitQualifierOptions;useDirty;autoIncrementPatch]
++++ </div></details> +++
+
 === pattern mode
 
 [TIP]
@@ -53,12 +78,165 @@ This mode allows some freedom to the project owner. As a project maintainer you 
 The pattern mode is new in jgitver-0.7.0 and is to be considered as beta feature.
 ====
 
-In this mode, {jgitver-lib}[jgitver] computes some metadatas that can be used in a pattern definition, provided by configuration, to compute the final version.
+In this mode, {jgitver-lib}[jgitver] computes some metadatas that can be used in a pattern definition to compute the final version.
 
-[NOTE]
-====
-this section needs enhancements. Partial information can be found in https://github.com/jgitver/jgitver/issues/33#issuecomment-350811654[jgitver#33].
-====
+These pattern definitions are given as configuration options and should follow the grammar below.
+
++++ <details><summary> +++
+*_Click for configuration options_*
++++ </summary><div> +++
+
+include::options.adoc[tags=tagVersionPattern;versionPattern;qualifierOptions;maxDepth;autoIncrementPatch]
++++ </div></details> +++
+
+==== Pattern grammar
+
+* A `_pattern_` consists of at least one `_pattern element_`, one after another
+* A `_pattern element_` is either arbitrary characters or a `_delimited placeholder_`
+** Arbitrary characters include letters, digits, or any of the four symbols "`_-.+`"
+* A `_delimited placeholder_` is "`${`", followed by a `_placeholder_`, followed by "`}`"
+* A `_placeholder_` is an `_inner placeholder_`, possibly with a `_prefix_` before it
+* A `_prefix_` is one of any of the following:
+** Arbitrary characters followed by "`:`" means the characters will always appear before the `_inner placeholder_`, even if it empty
+** Arbitrary characters followed by "`~`" means the characters will appear before the `_inner placeholder_` if it is not empty
+** "`<`" automatically applies a separator (hyphen between qualifier and version, period between qualifiers) to conform with strict https://semver.org/[semver rules]
+* An `_inner placeholder_` is one of any of the following:
+** "`v`", which will be replaced with the full calculated version number (major.minor.patch)
+** "`M`", which will be replaced with the calculated major version number
+** "`m`", which will be replaced with the calculated minor version number
+** "`p`", which will be replaced with the calculated patch version number
+** "`sys.`" followed by arbitrary characters, which will be replaced with accessing that system property (via Java's `System.getProperty`)
+** "`env.`" followed by arbitrary characters, which will be replaced with accessing that environment variable (via Java's `System.getenv`)
+** "`meta.`" followed by arbitrary characters, which will be replaced with accessing that meta field
+
+==== Meta fields
+
+|===
+|Name |Description
+
+|"`CALCULATED_VERSION`"
+|The calculated version
+
+|"`DIRTY`"
+|Is the repository dirty
+
+|"`HEAD_COMMITTER_NAME`"
+|Name of the commiter of HEAD commit
+
+|"`HEAD_COMMITER_EMAIL`"
+|Email of the commiter of HEAD commit
+
+|"`HEAD_COMMIT_DATETIME`"
+|Datetime of the commit
+
+|"`GIT_SHA1_FULL`"
+|Corresponds to then the full git identifier of the HEAD
+
+|"`GIT_SHA1_8`"
+|Corresponds to a substring of the git identifier of the HEAD
+
+|"`BRANCH_NAME`"
+|Corresponds to the current branch name if any
+
+|"`QUALIFIED_BRANCH_NAME`"
+|Branch name used as a qualifier if any
+
+|"`HEAD_TAGS`"
+|Corresponds to the list of tags, associated with the current HEAD
+
+|"`HEAD_ANNOTATED_TAGS`"
+|Corresponds to the list of annotated tags, associated with the current HEAD
+
+|"`HEAD_LIGHTWEIGHT_TAGS`"
+|Corresponds to the list of light tags, associated with the current HEAD
+
+|"`HEAD_VERSION_TAGS`"
+|Corresponds to the list of tags, eligible as version, associated with the current HEAD
+
+|"`HEAD_VERSION_ANNOTATED_TAGS`"
+|Corresponds to the list of annotated tags, eligible as version, associated with the current HEAD
+
+|"`HEAD_VERSION_LIGHTWEIGHT_TAGS`"
+|Corresponds to the list of light tags, eligible as version, associated with the current HEAD
+
+|"`BASE_TAG`"
+|Corresponds to the base tag that was used for the version calculation
+
+|"`BASE_TAG_TYPE`"
+|Corresponds to the type of tag that was used for the version calculation
+
+|"`ALL_TAGS`"
+|Corresponds to the whole list of tags of the current repository
+
+|"`ALL_ANNOTATED_TAGS`"
+|Corresponds to the whole list of annotated tags of the current repository
+
+|"`ALL_LIGHTWEIGHT_TAGS`"
+|Corresponds to the whole list of light tags of the current repository
+
+|"`ALL_VERSION_TAGS`"
+|Corresponds to the whole list of tags that can serve for version calculation
+
+|"`ALL_VERSION_ANNOTATED_TAGS`"
+|Corresponds to the whole list of annotated tags of the current repository that can serve for version calculation
+
+|"`ALL_VERSION_LIGHTWEIGHT_TAGS`"
+|Corresponds to the whole list of light tags of the current repository that can serve for version calculation
+
+|"`NEXT_MAJOR_VERSION`"
+|Exposes the next calculated version by adding one to the major digit of the current retained version
+
+|"`NEXT_MINOR_VERSION`"
+|Exposes the next calculated version by adding one to the minor digit of the current retained version
+
+|"`NEXT_PATCH_VERSION`"
+|Exposes the next calculated version by adding one to the patch digit of the current retained version
+
+|"`BASE_VERSION`"
+|Exposes the version used to base the calculation on for the retained version
+
+|"`CURRENT_VERSION_MAJOR`"
+|Exposes the major version of the computed version, ie the X in X.Y.Z
+
+|"`CURRENT_VERSION_MINOR`"
+|Exposes the minor version of the computed version, ie the Y in X.Y.Z
+
+|"`CURRENT_VERSION_PATCH`"
+|Exposes the patch version of the computed version, ie the Z in X.Y.Z
+
+|"`COMMIT_DISTANCE`"
+|Exposes the commit distance from the base tag used for the version computation
+
+|"`COMMIT_TIMESTAMP`"
+|Exposes the commit timestamp instant in the current system timezone using a simplified DateTimeFormatter.ISO_LOCAL_DATE_TIME
+|===
+
+==== Examples
+
+As a simple example, the following patterns produce equivalent output:
+
+* "`${v}`"
+* "`${M}.${m}.${p}`"
+* "`${meta.CALCULATED_VERSION}`"
+
+The following pattern substitutes the commit distance for the patch number:
+
+* "`${M}.${m}.${meta.COMMIT_DISTANCE}"
+
+The following pattern appends the branch name and git commit ID as a qualifier, using the "`<`" prefix to use periods after the first hyphen:
+
+* "`${v}${<meta.QUALIFIED_BRANCH_NAME}${<meta.GIT_SHA1_8}`" might produce "1.2.3-develop.a1b2c3d4"
+
+The following pattern appends the value of an environment variable "FOO" to the version, and always adds a hyphen even if it is empty with the "`:`" prefix:
+
+* "`${v}${-:env.FOO}`" might produce "1.2.3-bar" if the "FOO" environment variable contains "bar"
+* "`${v}${-:env.FOO}`" might produce "1.2.3-" if the "FOO" environment variable is empty
+
+Same as above but using the "`~`" prefix to optionally apply the hyphen:
+
+* "`${v}${-~env.FOO}`" might produce "1.2.3-bar" if the "FOO" environment variable contains "bar"
+* "`${v}${-~env.FOO}`" might produce "1.2.3" if the "FOO" environment variable is empty
+
 
 == Maven configuration
 
