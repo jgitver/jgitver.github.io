@@ -1,0 +1,248 @@
+// tag::strategyOptions[]
+
+// tag::strategy[]
+.strategy
+****
+*Type*: one of "MAVEN", "CONFIGURABLE", "PATTERN"
+
+*Default*: `"CONFIGURABLE"` (`"MAVEN"` if using the Maven plugin)
+
+Selects what strategy/mode to use jgitver in. CONFIGURABLE is generally referred to as the default unless specifically talking about Maven.
+****
+// end::strategy[]
+
+// tag::mavenLike[]
+.mavenLike (deprecated)
+****
+*Type*: boolean
+
+*Default*: `false`
+
+Deprecated in favor of setting the strategy. If `true`, equivalent to setting the MAVEN strategy.
+****
+// end::mavenLike[]
+
+// end::strategyOptions[]
+
+
+
+// tag::qualifierOptions[]
+
+// tag::nonQualifierBranches[]
+.nonQualifierBranches
+****
+*Type*: string (comma-separated list of branch names)
+
+*Default*: `"master"`
+
+Branches for which the version should not have a qualifier added.
+
+Setting this option replaces any configuration for the qualifierBranchingPolicies option.
+****
+// end::nonQualifierBranches[]
+
+// tag::qualifierBranchingPolicies[]
+.qualifierBranchingPolicies
+****
+*Type*: list of branch policies (configuration varies)
+
+*Default*: None
+
+Configuration of this option varies depending on your platform (Maven vs. Gradle).
+
+At a high-level, each branch policy is a combination of two things:
+
+1. *Pattern*, a regex string with a single capture group
+2. *Transformations*, a list of strings
+
+Valid transformations are below:
+
+- `"IDENTITY"` or `"REMOVE_UNEXPECTED_CHARS"`: removes whitespace, dashes, and slashes
+- `"REPLACE_UNEXPECTED_CHARS_UNDERSCORE"`: replaces whitespace, dashes, and slashes with underscores
+- `"UPPERCASE"`: all characters made uppercase with default Java locale
+- `"LOWERCASE"`: all characters made lowercase with default Java locale
+- `"UPPERCASE_EN"`: all characters made uppercase with Java English locale
+- `"LOWERCASE_EN"`: all characters made lowercase with Java English locale
+- `"IGNORE"`: do not use branch name as a qualifier
+
+If you define a branch policy with a pattern but don't specify any transformations,
+`"REPLACE_UNEXPECTED_CHARS_UNDERSCORE"` and `"LOWERCASE_EN"` will be used by default.
+
+See the configuration sections for more information on setting this option.
+****
+// end::qualifierBranchingPolicies[]
+
+// tag::useDefaultBranchingPolicy[]
+.useDefaultBranchingPolicy
+****
+*Type*: boolean
+
+*Default*: `true`
+
+If `true`, adds a default fallback branch policy behind any set by the qualifierBranchingPolicies option.
+
+The default fallback is as follows:
+
+- *Pattern*: `"(.*)"`
+- *Transformations*: `["REPLACE_UNEXPECTED_CHARS_UNDERSCORE", "LOWERCASE_EN"]`
+****
+// end::useDefaultBranchingPolicy[]
+
+// end::qualifierOptions[]
+
+
+
+// tag::gitQualifierOptions[]
+
+// tag::useDistance[]
+.useDistance
+****
+*Type*: boolean
+
+*Default*: `true`
+
+If `true`, add the distance between HEAD and the commit with the tag used to calculate a version as a qualifier.
+
+This is not used if the "SNAPSHOT" qualifier is added to the calculated version.
+****
+// end::useDistance[]
+
+// tag::useLongFormat[]
+.useLongFormat
+****
+*Type*: boolean
+
+*Default*: `false`
+
+If `true`, put a "g" before any git commit ID qualifiers to be compliant with the `git describe --long` format.
+****
+// end::useLongFormat[]
+
+// tag::useGitCommitId[]
+.useGitCommitId
+****
+*Type*: boolean
+
+*Default*: `false`
+
+If `true`, appends the SHA1 git commit ID as a qualifier.
+
+This is not used if the "SNAPSHOT" qualifier is added to the calculated version.
+****
+// end::useGitCommitId[]
+
+// tag::useGitCommitTimestamp[]
+.useGitCommitTimestamp
+****
+*Type*: boolean
+
+*Default*: `false`
+
+If `true`, appends the git commit timestamp as a qualifier.
+
+This is not used if the "SNAPSHOT" qualifier is added to the calculated version.
+****
+// end::useGitCommitTimestamp[]
+
+// tag::gitCommentIdLength[]
+.gitCommentIdLength
+****
+*Type*: int (between 8 and 40 inclusive)
+
+*Default*: `8`
+
+Sets the length of git commit IDs used as a qualifier by the useGitCommitId option.
+****
+// end::gitCommentIdLength[]
+
+// end::gitQualifierOptions[]
+
+
+
+// tag::generalOptions[]
+
+// tag::maxDepth[]
+.maxDepth
+****
+*Type*: int
+
+*Default*: `Integer.MAX_VALUE`
+
+Sets how many commits deep to look for tags to calculate the version from.
+****
+// end::maxDepth[]
+
+// tag::lookupPolicy[]
+.lookupPolicy
+****
+*Type*: one of "MAX", "LATEST", "NEAREST"
+
+*Default*: `"MAX"`
+
+Sets how tags should be used for calculating versions.
+****
+// end::lookupPolicy[]
+
+// tag::regexVersionTag[]
+.regexVersionTag
+****
+*Type*: string (regexp with at least one capture group)
+
+*Default*: `"v?([0-9]+(?:\\.[0-9]+){0,2}(?:-[a-zA-Z0-9\\-_]+)?)"`
+
+Defines how versions should be extracted from tags. The capture group should select the version to use for calculations.
+****
+// end::regexVersionTag[]
+
+// end::generalOptions[]
+
+
+
+// tag::autoIncrementPatch[]
+.autoIncrementPatch
+****
+*Type*: boolean
+
+*Default*: `false`
+
+If `true`, increment the patch version by one if the tag used to calculate a version was:
+
+- A normal, annotated one (not lightweight)
+- On some commit before HEAD (not on HEAD itself)
+
+This is not used if the "SNAPSHOT" qualifier is added to the calculated version.
+****
+// end::autoIncrementPatch[]
+
+// tag::useDirty[]
+.useDirty
+****
+*Type*: boolean
+
+*Default*: `false`
+
+If `true`, append "dirty" as a qualifier if the repository has uncommitted changes or new files.
+****
+// end::useDirty[]
+
+// tag::tagVersionPattern[]
+.tagVersionPattern
+****
+*Type*: string
+
+*Default*: `"${v}"`
+
+In the PATTERN strategy, define the version pattern to use the HEAD is on an annotated tag.
+****
+// end::tagVersionPattern[]
+
+// tag::versionPattern[]
+.versionPattern
+****
+*Type*: string
+
+*Default*: `"${v}${<meta.QUALIFIED_BRANCH_NAME}${<meta.COMMIT_DISTANCE}"`
+
+In the PATTERN strategy, define the version pattern to use by default (when HEAD is not on an annotated tag).
+****
+// end::versionPattern[]
