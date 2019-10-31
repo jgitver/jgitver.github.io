@@ -240,17 +240,231 @@ Same as above but using the "`~`" prefix to optionally apply the hyphen:
 
 == Maven configuration
 
-include::includes.adoc[tag=wip]
+=== Configuration file
 
-see the https://github.com/jgitver/jgitver-maven-plugin[jgitver-maven-plugin] project
-https://github.com/jgitver/jgitver-maven-plugin/blob/master/README.md[README] until the doc is enhanced.
+{jgitver-maven-plugin}[Jgitver's Maven] configuration file may be placed at `$rootProjectDir/.mvn/jgitver.config.xml`.
+
+The file should be compliant with the latest schema (given in the https://github.com/jack-r-warren/jgitver-maven-plugin/blob/master/README.md[README]). An example is below.
+
+The file as given is the default, if a value isn't provided it is because there isn't a default. All settings are optional.
+
+[source,xml]
+.jgitver.config.xml
+----
+<configuration xmlns="http://jgitver.github.io/maven/configuration/1.1.0"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://jgitver.github.io/maven/configuration/1.1.0 https://jgitver.github.io/maven/configuration/jgitver-configuration-v1_1_0.xsd">
+
+    <!-- One of MAVEN, CONFIGURABLE, PATTERN -->
+    <strategy>MAVEN</strategy>
+
+    <!-- Deprecated (this field replaced and overridden by strategy), boolean -->
+    <mavenLike>true</mavenLike>
+
+    <!-- One of MAX, LATEST, NEAREST -->
+    <policy>MAX</policy>
+
+    <!-- Boolean -->
+    <autoIncrementPatch>true</autoIncrementPatch>
+
+    <!-- Boolean -->
+    <useCommitDistance>true</useCommitDistance>
+
+    <!-- Boolean -->
+    <useDirty>false</useDirty>
+
+    <!-- Boolean -->
+    <useGitCommitId>false</useGitCommitId>
+
+    <!-- Integer between 8 and 40 inclusive -->
+    <gitCommitIdLength>8</gitCommitIdLength>
+
+    <!-- Integer -->
+    <maxSearchDepth>Integer.MAX_VALUE</maxSearchDepth>
+
+    <!-- String, comma separate multiple branches -->
+    <nonQualifierBranches>master</nonQualifierBranches>
+
+    <!-- An optional list of directories to not assign Jgitver's version for -->
+    <exclusions>
+        <!-- String, relative path from project root -->
+        <exclusion></exclusion>
+    </exclusions>
+
+    <!-- Boolean -->
+    <useDefaultBranchingPolicy>true</useDefaultBranchingPolicy>
+
+    <!-- String, only for PATTERN strategy" -->
+    <versionPattern>${v}${&lt;meta.QUALIFIED_BRANCH_NAME}${&lt;meta.COMMIT_DISTANCE}</versionPattern>
+    <!-- Usages of "<" are escaped with "&lt;" -->
+
+    <!-- String, only for PATTERN strategy -->
+    <tagVersionPattern>${v}</tagVersionPattern>
+
+    <branchPolicies>
+        <branchPolicy>
+            <!-- String, regex with one capture group -->
+            <pattern></pattern>
+            <transformations>
+                <!-- String, a name of a transformation -->
+                <transformation>REPLACE_UNEXPECTED_CHARS_UNDERSCORE</transformation>
+                <transformation>LOWERCASE_EN</transformation>
+            </transformations>
+        </branchPolicy>
+    </branchPolicies>
+
+    <!-- String, regex with at least one capture group -->
+    <regexVersionTag>v?([0-9]+(?:\\.[0-9]+){0,2}(?:-[a-zA-Z0-9\\-_]+)?)</regexVersionTag>
+</configuration>
+----
+
+The branch policy is a list so that it may represent policies for different patterns. For example:
+
+[source,xml]
+----
+<configuration xmlns="http://jgitver.github.io/maven/configuration/1.1.0"
+	    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	    xsi:schemaLocation="http://jgitver.github.io/maven/configuration/1.1.0 https://jgitver.github.io/maven/configuration/jgitver-configuration-v1_1_0.xsd">
+    <branchPolicies>
+        <branchPolicy>
+            <pattern>feature_(.*)</pattern>
+            <transformations>
+                <transformation>REMOVE_UNEXPECTED_CHARS</transformation>
+                <transformation>UPPERCASE</transformation>
+            </transformations>
+        </branchPolicy>
+        <branchPolicy>
+            <pattern>(master)</pattern>
+            <transformations>
+                <transformation>IGNORE</transformation>
+            </transformations>
+        </branchPolicy>
+    </branchPolicies>
+</configuration>
+----
+
+For more information on all of the different options, see the configuration options for your chosen <<Modes, mode>>.
 
 == Gradle configuration
 
-include::includes.adoc[tag=wip]
+[NOTE]
+====
+Configuration of the https://github.com/jgitver/gradle-jgitver-plugin[gradle-jgitver-plugin] is only supported in plugin versions above 0.2.0.
 
-see the https://github.com/jgitver/gradle-jgitver-plugin[gradle-jgitver-plugin] project
-https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md[README] until the doc is enhanced.
+Information on behavior before that point is available in the https://github.com/jgitver/gradle-jgitver-plugin/blob/master/README.md#version--020-1[README].
+====
+
+=== Configuration block
+
+{jgitver-gradle-plugin}[Jgitver's Gradle] configuration block is as follows.
+
+The block as given is the default, if a value is missing it is because none is provided by default. All settings are optional.
+
+[source,groovy]
+.build.gradle
+----
+jgitver {
+    // One of 'MAVEN', 'CONFIGURABLE', 'PATTERN'
+    strategy 'CONFIGURABLE'
+
+    // Deprecated (use strategy instead), boolean
+    mavenLike false
+
+    // One of 'MAX', 'LATEST', 'NEAREST'
+    policy 'MAX'
+
+    // Boolean
+    autoIncrementPatch true
+
+    // Boolean
+    useDistance true
+
+    // Boolean
+    useDirty false
+
+    // Boolean
+    failIfDirty false
+
+    // Boolean
+    useGitCommitTimestamp false
+
+    // Boolean
+    useGitCommitID false
+
+    // Integer between 8 and 40 inclusive
+    gitCommitIDLength 8
+
+    // Since plugin version 0.7.0, integer
+    maxDepth Integer.MAX_VALUE
+
+    // String, comma separate multiple branches
+    nonQualifierBranches 'master'
+
+    // Since plugin version 0.6.0, string, only for PATTERN strategy
+    versionPattern '${v}${<meta.QUALIFIED_BRANCH_NAME}${<meta.COMMIT_DISTANCE}'
+
+    // Since plugin version 0.6.0, string, only for PATTERN strategy
+    tagVersionPattern '${v}'
+
+    // Closure, can be set multiple times
+    policy {
+        // String, regex with one capture group
+        pattern =
+        // Array of strings, each being a transformation
+        transformations = ['REPLACE_UNEXPECTED_CHARS_UNDERSCORE', 'LOWERCASE_EN']
+    }
+
+    // One of 'FIRST_PARENT', 'LOG', 'DEPTH'
+    distanceCalculatorKind 'FIRST_PARENT'
+
+    // String, regex with at least one capture group
+    regexVersionTag 'v?([0-9]+(?:\\.[0-9]+){0,2}(?:-[a-zA-Z0-9\\-_]+)?)'
+}
+----
+
+The branch policy can be set multiple times to set policies for different patterns. For example:
+
+[source,groovy]
+----
+jgitver {
+    policy {
+		pattern = 'feature_(.*)'
+		transformations = ['REMOVE_UNEXPECTED_CHARS', 'UPPERCASE']
+	}
+    policy {
+		pattern = '(master)'
+		transformations = ['IGNORE']
+	}
+}
+----
+
+For more information on all of the different options, see the configuration options for your chosen <<Modes, mode>>.
+
+=== Multi-project builds
+
+In a https://guides.gradle.org/creating-multi-project-builds/[multi-project] build, {jgitver-doc}[jgitver] can be enabled and globally for all projects.
+Assuming that the root project and all sub-projects are in the same repository, this will keep their versions perfectly in sync.
+
+Configuration is done in the root project's build.gradle:
+
+[source,groovy]
+.build.gradle
+----
+// Define plugin here (only actually applies the plugin in the root project)
+plugins {
+    id "fr.brouillard.oss.gradle.jgitver" version "0.9.1"
+}
+
+allprojects {
+
+    // Ensure plugin is applied in all projects
+    apply plugin: 'fr.brouillard.oss.gradle.jgitver'
+
+    jgitver {
+        // Your config goes here
+    }
+}
+----
 
 == IDEs usage
 
