@@ -2,9 +2,9 @@ include::attributes.adoc[]
 = Maven usage
 
 For http://maven.apache.org/[maven] world, {jgitver-doc}[jgitver] is provided as a maven core extension ; as such it needs to be referenced inside a file `YOUR_PROJECT/.mvn/extensions.xml`.
-If you do not have already an extension file, create one using any below technique.
+If you do not have already an extension file, create one using any following techniques.
 
-== Automatic creation of _.mvn/extensions.xml_
+=== Automatic creation of _.mvn/extensions.xml_
 
 In order to automatically create _.mvn/extensions.xml_ file with latest jgitver version
 
@@ -22,11 +22,11 @@ sh -c "$(curl -fsSL https://git.io/fA6sj)"
 sh -c "$(wget -q https://git.io/fA6sj -O -)"
 ----
 
-== Manual edition of _.mvn/extensions.xml_
+=== Manual addition of _.mvn/extensions.xml_
 
 * Create a directory `.mvn` under the root directory of your project.
 * Create file `.mvn/extensions.xml`
-* Put the following content to `.mvn/extensions.xml` (adapt to http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22fr.brouillard.oss%22%20a%3A%22jgitver-maven-plugin%22[latest version]).
+* Add the following content to `.mvn/extensions.xml` (adapt to http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22fr.brouillard.oss%22%20a%3A%22jgitver-maven-plugin%22[latest version]).
 
 [source,xml]
 ----
@@ -35,14 +35,14 @@ sh -c "$(wget -q https://git.io/fA6sj -O -)"
   <extension>
     <groupId>fr.brouillard.oss</groupId>
     <artifactId>jgitver-maven-plugin</artifactId>
-    <version>1.4.3</version>
+    <version>1.5.1</version>
   </extension>
 </extensions>
 ----
 
-== let jgitver operate
+== Let jgitver operate
 
-Once you have created the file, your project versioning is now handled by {jgitver-doc}[jgitver].
+Once you have created the extensions file, your project versioning is now handled by {jgitver-doc}[jgitver].
 Just launch `mvn validate` to see {jgitver-doc}[jgitver] in action on your project ; now you can see it computing your project version.
 
 .Maven launch on jgitver project itself
@@ -54,6 +54,8 @@ $ mvn validate
 [INFO] jgitver-maven-plugin is about to change project(s) version(s)
 [INFO]     fr.brouillard.oss::jgitver::0 -> 0.7.0-SNAPSHOT
 ----
+
+Note that for your project jgitver may detect that the version is "0.0.0-SNAPSHOT" because it cannot find any suitable git tags in the repo to determine the correct version. You will need to add tags to your git repo to fully enable jgitver versioning. See the demo below for an example.
 
 == Online demo
 
