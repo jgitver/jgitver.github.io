@@ -141,6 +141,9 @@ include::options.adoc[tags=tagVersionPattern;versionPattern;qualifierOptions;max
 |"`QUALIFIED_BRANCH_NAME`"
 |Branch name used as a qualifier if any
 
+|"`PROVIDED_BRANCH_NAME`"
+|Branch name externally provided if any.
+
 |"`HEAD_TAGS`"
 |Corresponds to the list of tags, associated with the current HEAD
 
@@ -207,8 +210,23 @@ include::options.adoc[tags=tagVersionPattern;versionPattern;qualifierOptions;max
 |"`COMMIT_DISTANCE`"
 |Exposes the commit distance from the base tag used for the version computation
 
+|"`COMMIT_DISTANCE_TO_ROOT`"
+|Exposes the distance from HEAD to the root ancestor
+
 |"`COMMIT_TIMESTAMP`"
 |Exposes the commit timestamp instant in the current system timezone using a simplified DateTimeFormatter.ISO_LOCAL_DATE_TIME
+
+|"`COMMIT_ISO_TIMESTAMP`"
+|Exposes the commit timestamp instant in the UTC timezone using DateTimeFormatter.ISO_OFFSET_DATE_TIME
+
+|"`ANNOTATED`"
+|True if the current HEAD is on an annotated tag, false otherwise
+
+|"`DETACHED_HEAD`"
+|True if the current HEAD is detached, false otherwise
+
+|"`BASE_COMMIT_ON_HEAD`"
+|True if the current HEAD is on the same commit as the one serving as reference for the version computation
 |===
 
 ==== Examples
