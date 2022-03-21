@@ -172,8 +172,8 @@ Sets how many commits deep to look for tags to calculate the version from.
 ****
 // end::maxDepth[]
 
-// tag::lookupPolicy[]
-.lookupPolicy
+// tag::Policy[]
+.Policy
 ****
 *Type*: one of "MAX", "LATEST", "NEAREST"
 
@@ -181,7 +181,7 @@ Sets how many commits deep to look for tags to calculate the version from.
 
 Sets how tags should be used for calculating versions.
 ****
-// end::lookupPolicy[]
+// end::Policy[]
 
 // tag::regexVersionTag[]
 .regexVersionTag
