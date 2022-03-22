@@ -120,6 +120,9 @@ include::options.adoc[tags=tagVersionPattern;versionPattern;qualifierOptions;max
 |"`DIRTY`"
 |Is the repository dirty
 
+|"`DIRTY_TEXT`"
+|Literally the text string 'dirty' if the repository is dirty, empty string otherwise
+
 |"`HEAD_COMMITTER_NAME`"
 |Name of the commiter of HEAD commit
 
